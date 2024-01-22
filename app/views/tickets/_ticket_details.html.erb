@@ -1,0 +1,18 @@
+<!-- app/views/tickets/_ticket_details.html.erb -->
+#<div>
+  #<p>Ticket Details:</p>
+  #<p><%= ticket.name %></p>
+ # <!-- Add other ticket details as needed -->
+#</div>
+
+<% if @ticket %>
+  <h2>Ticket Details</h2>
+  #<p>Ticket ID: <%= @ticket.id %></p>
+  <p><%= @ticket.name %></p>
+  <p>Bus: <%= @ticket.bus_name %></p>
+  <p>Departure Date: <%= @ticket.departure_date %></p>
+  #<!-- Additional ticket details... -->
+  <p>Your ticket has been confrimed.</p>
+<% else %>
+  <p>No ticket associated with this user.</p>
+<% end %>

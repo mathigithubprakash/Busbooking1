@@ -1,16 +1,35 @@
+<!-- app/views/layouts/application.html.erb -->
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Busbooking</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Your Bus Booking App</title>
+  <!-- Add your stylesheets, scripts, meta tags, etc. -->
+  <%= stylesheet_link_tag 'custom' %>
+</head>
+<body class="app-body">
+  <header>
+    <h1>Welcome to Your Bus Booking App</h1>
+    <!-- Navigation, header content, etc. -->
+  </header>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+  <%= yield %> 
+  
+  <% if @ticket %>
+    <h2>Ticket Details</h2>
+    <p>Ticket ID: <%= @ticket.id %></p>
+    <p>Name: <%= @ticket.name %></p>
+    <p>Bus: <%= @ticket.bus_name %></p>
+    <p>Departure Date: <%= @ticket.departure_date %></p>
+    <!-- Additional ticket details... -->
+    <p>Your ticket has been confirmed.</p>
+  <% else %>
+    <p>No ticket associated with this user.</p>
+  <% end %>
 
-  <body>
-    <%= yield %>
-  </body>
+  <!-- Content from the specific template goes here -->
+
+  <footer>
+    <p> Thank you for your journey </p>
+  </footer>
+</body>
 </html>

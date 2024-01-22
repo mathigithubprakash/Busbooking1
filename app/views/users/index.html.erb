@@ -1,0 +1,30 @@
+<!-- app/views/users/index.html.erb -->
+<h1>User List</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Ticket ID</th>
+      <th>Bus Name</th>
+      <th>Origin</th>
+      <th>Destination</th>
+      <!-- Add other attributes as needed -->
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+    <td><%= user.id %></td>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.ticket.id if user.ticket %></td>
+    <td><%= user.ticket.bus.bus_name if user.ticket && user.ticket.bus %></td>
+    <td><%= user.ticket.route.origin if user.ticket && user.ticket.route %></td>
+    <td><%= user.ticket.route.destination if user.ticket && user.ticket.route%></td>
+       </tr>
+  <% end %>
+</tbody>
+</table>

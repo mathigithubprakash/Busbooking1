@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_16_091228) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_16_162137) do
   create_table "buses", force: :cascade do |t|
     t.string "bus_name"
     t.integer "capacity"
@@ -43,9 +43,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_16_091228) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "ticket_id"
+    t.index ["ticket_id"], name: "index_users_on_ticket_id"
   end
 
   add_foreign_key "tickets", "buses"
   add_foreign_key "tickets", "routes"
   add_foreign_key "tickets", "users"
+  add_foreign_key "users", "tickets"
 end
